@@ -9,6 +9,8 @@
 # filter list. Let's abandon this `ln` symlink mess and just make an rsync
 # backup of everything.
 
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
 MACKUPDIR=${1%/}
 OUTDIR=${2%/}
 
@@ -28,12 +30,9 @@ function covert_cfg_to_rsync() {
 
     mkdir -p "${rsync_dir}"
 
-    # comment out anything that's not relevant to what we want to rsync
-    # - Comments out headers (ie: [application], [configuration_files])
-    # - Comments out the "name =" setting
-    # Blanks and comments are fine. If Mackup supports anything else in the
-    # future, we may need to modify.
-    sed -E 's/^(\[|name ?=)/\# \1/' "$cfg_file" > "$rsync_file.tmp"
+    sed -n -e '/^ *#/d; /^ *\[configuration_files\]$/,/^ *\[/{/^ *\[configuration_files\]$/d; /^ *\[/d; s/ *"//; s/",$//; p; }' "$cfg_file" >"$rsync_file.tmp"
+    local config_home="${XDG_CONFIG_HOME#$HOME/}"
+    sed -n -e '/^ *#/d; /^ *\[xdg_configuration_files\]$/,/^ *\[/{/^ *\[xdg_configuration_files\]$/d; /^ *\[/d; s/ *"//; s/",$//; p; }' "$cfg_file" | sed -e "s#^#$config_home/#" >>"$rsync_file.tmp"
 
     # we have no idea what's a directory and what's a file without testing
     # everything. And, since we probably have configs for things that aren't
