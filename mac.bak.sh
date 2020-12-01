@@ -62,7 +62,7 @@ if [ $# -eq 0 ]; then
     echo "Backing up everything to ${backupdir}"
     app_msg=0
     # shellcheck disable=SC2046
-    set -- $(find "$app_dir" -type f -a \( -name \*.rsync -o -name backup.sh \) | sed -e 's#/[^/]*$##; s#.*/##; s#\.cfg$##')
+    set -- $(find "$app_dir" -type f -a \( -name \*.rsync -o -name backup.sh \) | sed -e 's#/[^/]*$##; s#.*/##; s#\.cfg$##' | sort -u)
 else
     app_msg=1
 fi
