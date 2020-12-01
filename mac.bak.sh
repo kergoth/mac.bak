@@ -91,7 +91,7 @@ cat "${rsync_combined}.tmp" | awk '!/[^#]/ || !seen[$0]++' >"${rsync_combined}"
 rm "${rsync_combined}.tmp"
 
 # rsync
-rsync_cmd="rsync -acvL "
+rsync_cmd="rsync -acvX "
 if [[ -n $dry_run ]]; then
     rsync_cmd+="--dry-run "
 fi
