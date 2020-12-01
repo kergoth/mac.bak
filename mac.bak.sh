@@ -87,7 +87,7 @@ for app_name; do
 done
 
 # `awk '!/[^\#]/ || !seen[$0]++'` is a uniq trick without the need for a sort
-cat "${rsync_combined}.tmp" | awk '!/[^\#]/ || !seen[$0]++' > "${rsync_combined}"
+cat "${rsync_combined}.tmp" | awk '!/[^#]/ || !seen[$0]++' >"${rsync_combined}"
 rm "${rsync_combined}.tmp"
 
 # rsync
