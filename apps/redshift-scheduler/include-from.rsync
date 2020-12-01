@@ -1,4 +1,3 @@
-.config
-.config/redshift-scheduler
-.config/redshift-scheduler/rules.conf
-.config/redshift-scheduler/rules.conf/**
+redshift-scheduler
+redshift-scheduler/rules.conf
+redshift-scheduler/rules.conf/**

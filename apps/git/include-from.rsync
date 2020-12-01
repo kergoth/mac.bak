@@ -5,3 +5,5 @@ git/config
 git/config/**
 git/ignore
 git/ignore/**
+git/attributes
+git/attributes/**

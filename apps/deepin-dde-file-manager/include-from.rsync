@@ -1,4 +1,3 @@
-.config
-.config/deepin
-.config/deepin/dde-file-manager.json
-.config/deepin/dde-file-manager.json/**
+deepin
+deepin/dde-file-manager.json
+deepin/dde-file-manager.json/**

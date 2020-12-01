@@ -1,3 +1,2 @@
-.config
-.config/robomongo
-.config/robomongo/**
+robomongo
+robomongo/**

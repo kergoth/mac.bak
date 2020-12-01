@@ -1,4 +1,3 @@
-.config
-.config/dictget
-.config/dictget/goshare
-.config/dictget/goshare/**
+dictget
+dictget/goshare
+dictget/goshare/**

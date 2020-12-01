@@ -5,9 +5,8 @@ Library/Application Support/Cerebro/config.json
 Library/Application Support/Cerebro/config.json/**
 Library/Application Support/Cerebro/plugins
 Library/Application Support/Cerebro/plugins/**
-.config
-.config/Cerebro
-.config/Cerebro/config.json
-.config/Cerebro/config.json/**
-.config/Cerebro/plugins
-.config/Cerebro/plugins/**
+Cerebro
+Cerebro/config.json
+Cerebro/config.json/**
+Cerebro/plugins
+Cerebro/plugins/**

@@ -1,4 +1,3 @@
-.config
-.config/tint2
-.config/tint2/tint2rc
-.config/tint2/tint2rc/**
+tint2
+tint2/tint2rc
+tint2/tint2rc/**

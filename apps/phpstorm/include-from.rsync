@@ -1,8 +1,5 @@
 Library
 Library/Application Support
-Library/Application Support/JetBrains
-Library/Application Support/JetBrains/PhpStorm2020.1
-Library/Application Support/JetBrains/PhpStorm2020.1/**
 Library/Application Support/PhpStorm2016.1
 Library/Application Support/PhpStorm2016.1/**
 Library/Application Support/PhpStorm2016.2
@@ -27,6 +24,8 @@ Library/Application Support/PhpStorm2019.2
 Library/Application Support/PhpStorm2019.2/**
 Library/Application Support/PhpStorm2019.3
 Library/Application Support/PhpStorm2019.3/**
+Library/Application Support/PhpStorm2019.4
+Library/Application Support/PhpStorm2019.4/**
 Library/Application Support/WebIde100
 Library/Application Support/WebIde100/**
 Library/Application Support/WebIde60
@@ -66,6 +65,8 @@ Library/Preferences/PhpStorm2019.2
 Library/Preferences/PhpStorm2019.2/**
 Library/Preferences/PhpStorm2019.3
 Library/Preferences/PhpStorm2019.3/**
+Library/Preferences/PhpStorm2019.4
+Library/Preferences/PhpStorm2019.4/**
 Library/Preferences/WebIde100
 Library/Preferences/WebIde100/**
 Library/Preferences/WebIde60
@@ -78,3 +79,39 @@ Library/Preferences/WebIde90
 Library/Preferences/WebIde90/**
 Library/Preferences/WebIde95
 Library/Preferences/WebIde95/**
+.PhpStorm2016.1
+.PhpStorm2016.1/config
+.PhpStorm2016.1/config/**
+.PhpStorm2016.2
+.PhpStorm2016.2/config
+.PhpStorm2016.2/config/**
+.PhpStorm2016.3
+.PhpStorm2016.3/config
+.PhpStorm2016.3/config/**
+.PhpStorm2017.1
+.PhpStorm2017.1/config
+.PhpStorm2017.1/config/**
+.PhpStorm2017.2
+.PhpStorm2017.2/config
+.PhpStorm2017.2/config/**
+.PhpStorm2017.3
+.PhpStorm2017.3/config
+.PhpStorm2017.3/config/**
+.PhpStorm2018.1
+.PhpStorm2018.1/config
+.PhpStorm2018.1/config/**
+.PhpStorm2018.2
+.PhpStorm2018.2/config
+.PhpStorm2018.2/config/**
+.PhpStorm2018.3
+.PhpStorm2018.3/config
+.PhpStorm2018.3/config/**
+.PhpStorm2019.1
+.PhpStorm2019.1/config
+.PhpStorm2019.1/config/**
+.PhpStorm2019.2
+.PhpStorm2019.2/config
+.PhpStorm2019.2/config/**
+.PhpStorm2019.3
+.PhpStorm2019.3/config
+.PhpStorm2019.3/config/**

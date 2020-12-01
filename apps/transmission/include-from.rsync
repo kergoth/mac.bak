@@ -6,11 +6,10 @@ Library/Application Support
 Library/Application Support/Transmission
 Library/Application Support/Transmission/blocklists
 Library/Application Support/Transmission/blocklists/**
-.config
-.config/transmission
-.config/transmission/blocklists
-.config/transmission/blocklists/**
-.config/transmission/settings.json
-.config/transmission/settings.json/**
-.config/transmission/stats.json
-.config/transmission/stats.json/**
+transmission
+transmission/blocklists
+transmission/blocklists/**
+transmission/settings.json
+transmission/settings.json/**
+transmission/stats.json
+transmission/stats.json/**

@@ -1,2 +1,6 @@
 .juliarc.jl
 .juliarc.jl/**
+.julia
+.julia/config
+.julia/config/startup.jl
+.julia/config/startup.jl/**

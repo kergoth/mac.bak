@@ -1,3 +1,2 @@
-.config
-.config/ghostwriter
-.config/ghostwriter/**
+ghostwriter
+ghostwriter/**

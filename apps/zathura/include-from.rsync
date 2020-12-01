@@ -1,4 +1,3 @@
-.config
-.config/zathura
-.config/zathura/zathurarc
-.config/zathura/zathurarc/**
+zathura
+zathura/zathurarc
+zathura/zathurarc/**

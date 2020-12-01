@@ -1,3 +1,2 @@
-.config
-.config/fontconfig
-.config/fontconfig/**
+fontconfig
+fontconfig/**

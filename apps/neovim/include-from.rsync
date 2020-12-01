@@ -1,8 +1,7 @@
-.config
-.config/nvim
-.config/nvim/init.vim
-.config/nvim/init.vim/**
 .nvimrc
 .nvimrc/**
 .nvim
 .nvim/**
+nvim
+nvim/init.vim
+nvim/init.vim/**

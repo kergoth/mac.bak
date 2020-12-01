@@ -4,8 +4,7 @@ Library/Application Support/Sublime Text 3
 Library/Application Support/Sublime Text 3/Packages
 Library/Application Support/Sublime Text 3/Packages/User
 Library/Application Support/Sublime Text 3/Packages/User/**
-.config
-.config/sublime-text-3
-.config/sublime-text-3/Packages
-.config/sublime-text-3/Packages/User
-.config/sublime-text-3/Packages/User/**
+sublime-text-3
+sublime-text-3/Packages
+sublime-text-3/Packages/User
+sublime-text-3/Packages/User/**

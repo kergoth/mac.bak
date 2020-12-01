@@ -1,3 +1,2 @@
-.config
-.config/hub
-.config/hub/**
+hub
+hub/**

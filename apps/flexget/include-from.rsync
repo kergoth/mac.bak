@@ -1,7 +1,6 @@
-.config
-.config/flexget
-.config/flexget/config.yml
-.config/flexget/config.yml/**
 .flexget
 .flexget/config.yml
 .flexget/config.yml/**
+flexget
+flexget/config.yml
+flexget/config.yml/**

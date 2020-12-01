@@ -1,2 +1,5 @@
 .tmux.conf
 .tmux.conf/**
+tmux
+tmux/tmux.conf
+tmux/tmux.conf/**

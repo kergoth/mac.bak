@@ -1,5 +1,4 @@
-.config
-.config/kdenliverc
-.config/kdenliverc/**
 kdenlive
 kdenlive/**
+kdenliverc
+kdenliverc/**

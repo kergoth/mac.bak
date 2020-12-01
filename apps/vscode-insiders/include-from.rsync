@@ -8,12 +8,11 @@ Library/Application Support/Code - Insiders/User/keybindings.json
 Library/Application Support/Code - Insiders/User/keybindings.json/**
 Library/Application Support/Code - Insiders/User/settings.json
 Library/Application Support/Code - Insiders/User/settings.json/**
-.config
-.config/Code - Insiders
-.config/Code - Insiders/User
-.config/Code - Insiders/User/snippets
-.config/Code - Insiders/User/snippets/**
-.config/Code - Insiders/User/keybindings.json
-.config/Code - Insiders/User/keybindings.json/**
-.config/Code - Insiders/User/settings.json
-.config/Code - Insiders/User/settings.json/**
+Code - Insiders
+Code - Insiders/User
+Code - Insiders/User/snippets
+Code - Insiders/User/snippets/**
+Code - Insiders/User/keybindings.json
+Code - Insiders/User/keybindings.json/**
+Code - Insiders/User/settings.json
+Code - Insiders/User/settings.json/**

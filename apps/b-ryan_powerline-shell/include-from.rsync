@@ -1,4 +1,3 @@
-.config
-.config/powerline-shell
-.config/powerline-shell/config.json
-.config/powerline-shell/config.json/**
+powerline-shell
+powerline-shell/config.json
+powerline-shell/config.json/**

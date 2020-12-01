@@ -1,4 +1,3 @@
-.config
-.config/inkscape
-.config/inkscape/preferences.xml
-.config/inkscape/preferences.xml/**
+inkscape
+inkscape/preferences.xml
+inkscape/preferences.xml/**

@@ -1,3 +1,2 @@
-.config
-.config/hexchat
-.config/hexchat/**
+hexchat
+hexchat/**

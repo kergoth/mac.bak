@@ -8,12 +8,11 @@ Library/Application Support/Code/User/keybindings.json
 Library/Application Support/Code/User/keybindings.json/**
 Library/Application Support/Code/User/settings.json
 Library/Application Support/Code/User/settings.json/**
-.config
-.config/Code
-.config/Code/User
-.config/Code/User/snippets
-.config/Code/User/snippets/**
-.config/Code/User/keybindings.json
-.config/Code/User/keybindings.json/**
-.config/Code/User/settings.json
-.config/Code/User/settings.json/**
+Code
+Code/User
+Code/User/snippets
+Code/User/snippets/**
+Code/User/keybindings.json
+Code/User/keybindings.json/**
+Code/User/settings.json
+Code/User/settings.json/**

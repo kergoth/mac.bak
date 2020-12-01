@@ -1,3 +1,2 @@
-.config
-.config/redshift.conf
-.config/redshift.conf/**
+redshift.conf
+redshift.conf/**
