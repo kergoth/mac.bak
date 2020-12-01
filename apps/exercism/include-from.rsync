@@ -1,4 +1,5 @@
 .exercism
 .exercism/**
-exercism
-exercism/**
+.config
+.config/exercism
+.config/exercism/**

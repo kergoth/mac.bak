@@ -1,2 +1,3 @@
-MusicBrainz
-MusicBrainz/**
+.config
+.config/MusicBrainz
+.config/MusicBrainz/**

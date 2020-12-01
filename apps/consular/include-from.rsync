@@ -1,4 +1,5 @@
 .consularc
 .consularc/**
-consular
-consular/**
+.config
+.config/consular
+.config/consular/**

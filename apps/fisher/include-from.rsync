@@ -1,3 +1,4 @@
-fish
-fish/fishfile
-fish/fishfile/**
+.config
+.config/fish
+.config/fish/fishfile
+.config/fish/fishfile/**

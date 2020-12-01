@@ -1,5 +1,6 @@
 .proselintrc
 .proselintrc/**
-proselint
-proselint/config
-proselint/config/**
+.config
+.config/proselint
+.config/proselint/config
+.config/proselint/config/**

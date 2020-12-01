@@ -1,2 +1,3 @@
-libreoffice
-libreoffice/**
+.config
+.config/libreoffice
+.config/libreoffice/**

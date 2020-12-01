@@ -2,5 +2,6 @@ Library
 Library/Preferences
 Library/Preferences/calibre
 Library/Preferences/calibre/**
-calibre
-calibre/**
+.config
+.config/calibre
+.config/calibre/**

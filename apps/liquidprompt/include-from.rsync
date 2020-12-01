@@ -1,4 +1,5 @@
 .liquidpromptrc
 .liquidpromptrc/**
-liquidpromptrc
-liquidpromptrc/**
+.config
+.config/liquidpromptrc
+.config/liquidpromptrc/**

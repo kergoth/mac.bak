@@ -1,2 +1,3 @@
-clash
-clash/**
+.config
+.config/clash
+.config/clash/**

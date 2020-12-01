@@ -1,3 +1,4 @@
-mako
-mako/config
-mako/config/**
+.config
+.config/mako
+.config/mako/config
+.config/mako/config/**

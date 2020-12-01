@@ -1,9 +1,10 @@
 .filezilla
 .filezilla/**
-filezilla
-filezilla/filezilla.xml
-filezilla/filezilla.xml/**
-filezilla/layout.xml
-filezilla/layout.xml/**
-filezilla/sitemanager.xml
-filezilla/sitemanager.xml/**
+.config
+.config/filezilla
+.config/filezilla/filezilla.xml
+.config/filezilla/filezilla.xml/**
+.config/filezilla/layout.xml
+.config/filezilla/layout.xml/**
+.config/filezilla/sitemanager.xml
+.config/filezilla/sitemanager.xml/**

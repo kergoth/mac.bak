@@ -6,6 +6,7 @@ Library/Application Support/pip/pip.conf/**
 .pip
 .pip/pip.conf
 .pip/pip.conf/**
-pip
-pip/pip.conf
-pip/pip.conf/**
+.config
+.config/pip
+.config/pip/pip.conf
+.config/pip/pip.conf/**

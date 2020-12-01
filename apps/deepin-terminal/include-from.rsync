@@ -1,4 +1,5 @@
-deepin
-deepin/deepin-terminal
-deepin/deepin-terminal/config.conf
-deepin/deepin-terminal/config.conf/**
+.config
+.config/deepin
+.config/deepin/deepin-terminal
+.config/deepin/deepin-terminal/config.conf
+.config/deepin/deepin-terminal/config.conf/**

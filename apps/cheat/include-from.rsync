@@ -1,5 +1,6 @@
 .cheat
 .cheat/**
-cheat
-cheat/conf.yml
-cheat/conf.yml/**
+.config
+.config/cheat
+.config/cheat/conf.yml
+.config/cheat/conf.yml/**

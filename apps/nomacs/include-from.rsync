@@ -1,2 +1,3 @@
-nomacs
-nomacs/**
+.config
+.config/nomacs
+.config/nomacs/**

@@ -1,2 +1,3 @@
-karabiner
-karabiner/**
+.config
+.config/karabiner
+.config/karabiner/**

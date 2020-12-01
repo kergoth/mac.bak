@@ -1,3 +1,4 @@
-beets
-beets/config.yaml
-beets/config.yaml/**
+.config
+.config/beets
+.config/beets/config.yaml
+.config/beets/config.yaml/**

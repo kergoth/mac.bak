@@ -8,6 +8,7 @@ Library/Application Support
 Library/Application Support/keepassx
 Library/Application Support/keepassx/keepassx2.ini
 Library/Application Support/keepassx/keepassx2.ini/**
-keepassx
-keepassx/keepassx2.ini
-keepassx/keepassx2.ini/**
+.config
+.config/keepassx
+.config/keepassx/keepassx2.ini
+.config/keepassx/keepassx2.ini/**

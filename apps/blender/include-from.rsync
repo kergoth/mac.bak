@@ -2,5 +2,6 @@ Library
 Library/Application Support
 Library/Application Support/Blender
 Library/Application Support/Blender/**
-blender
-blender/**
+.config
+.config/blender
+.config/blender/**

@@ -1,3 +1,4 @@
-deepin
-deepin/dde-dock.conf
-deepin/dde-dock.conf/**
+.config
+.config/deepin
+.config/deepin/dde-dock.conf
+.config/deepin/dde-dock.conf/**

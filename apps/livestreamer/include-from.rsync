@@ -1,7 +1,8 @@
 .livestreamerrc
 .livestreamerrc/**
-livestreamer
-livestreamer/config
-livestreamer/config/**
-livestreamer/plugins
-livestreamer/plugins/**
+.config
+.config/livestreamer
+.config/livestreamer/config
+.config/livestreamer/config/**
+.config/livestreamer/plugins
+.config/livestreamer/plugins/**

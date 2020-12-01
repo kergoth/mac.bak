@@ -1,2 +1,3 @@
-omf
-omf/**
+.config
+.config/omf
+.config/omf/**

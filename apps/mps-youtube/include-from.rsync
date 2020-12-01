@@ -1,5 +1,6 @@
-mps-youtube
-mps-youtube/config
-mps-youtube/config/**
-mps-youtube/playlist_v2
-mps-youtube/playlist_v2/**
+.config
+.config/mps-youtube
+.config/mps-youtube/config
+.config/mps-youtube/config/**
+.config/mps-youtube/playlist_v2
+.config/mps-youtube/playlist_v2/**

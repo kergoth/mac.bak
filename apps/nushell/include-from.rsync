@@ -1,3 +1,4 @@
-nu
-nu/config.toml
-nu/config.toml/**
+.config
+.config/nu
+.config/nu/config.toml
+.config/nu/config.toml/**
