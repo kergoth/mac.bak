@@ -128,7 +128,7 @@ done
 shift $((OPTIND - 1))
 
 scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
-MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/vendor/mackup}/mackup/applications}"
+MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/mackup}/mackup/applications}"
 
 tmpdir="$(mktemp -d -t "${0##*/}.XXXXXX")" || exit 1
 trap 'rm -rf "$tmpdir" 2>/dev/null' EXIT INT TERM

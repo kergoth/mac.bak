@@ -36,7 +36,7 @@ fi
 
 scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
 MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/mackup}/mackup/applications}"
-MAC_BAK_DIR="$scriptdir/vendor/mac.bak"
+MAC_BAK_DIR="$scriptdir/mac.bak"
 
 if [ -z "$app_names" ]; then
     app_names="$(list_all_apps ~/.mackup "$MACKUP_APPS_DIR")"
