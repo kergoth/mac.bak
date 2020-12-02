@@ -1,0 +1,95 @@
+#!/bin/bash
+
+set -euo pipefail
+
+usage() {
+    echo >&2 "${0##*/} [-a APP_NAME..] [RSYNC_ARGS..]"
+    echo >&2 "See rsync -h."
+    exit 2
+}
+
+list_all_apps() {
+    for dir; do
+        find "$dir" -name \*.cfg
+    done \
+        | sed -e 's#.*/##; s#\.cfg$##;' \
+        | sort -u
+}
+
+app_names=
+while true; do
+    if [ $# -eq 0 ]; then
+        usage
+    fi
+    if [ "$1" = "--" ]; then
+        shift
+        break
+    else
+        app_names="$app_names $1"
+        shift
+    fi
+done
+
+if [ $# -eq 0 ]; then
+    usage
+fi
+
+scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
+MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/mackup}/mackup/applications}"
+MAC_BAK_DIR="$scriptdir/vendor/mac.bak"
+
+if [ -z "$app_names" ]; then
+    app_names="$(list_all_apps ~/.mackup "$MACKUP_APPS_DIR")"
+    specified_apps=0
+else
+    specified_apps=1
+fi
+
+tmpdir="$(mktemp -d -t "${0##*/}.XXXXXX")" || exit 1
+trap 'rm -rf "$tmpdir"' EXIT INT TERM
+
+mkdir "$tmpdir/mackup"
+for app in $app_names; do
+    found=0
+    for appsdir in "$scriptdir/apps" "$MAC_BAK_DIR/apps" "$tmpdir/apps"; do
+        if [ -e "$appsdir/$app" ]; then
+            found=1
+        fi
+    done
+    if [ "$found" -eq 1 ]; then
+        continue
+    fi
+
+    cfg=
+    for dir in ~/.mackup "$MACKUP_APPS_DIR"; do
+        if [ -e "$dir/$app.cfg" ]; then
+            cfg="$dir/$cfg"
+            break
+        fi
+    done
+    if [ -n "$cfg" ]; then
+        cp -f "$cfg" "$tmpdir/mackup/"
+    elif [ "$specified_apps" -eq 1 ]; then
+        echo >&2 "Error: no configuration found for specified app $app"
+        exit 1
+    fi
+done
+
+# shellcheck disable=SC2046
+if [ $(find "$tmpdir/mackup" -type f | wc -l) -ne 0 ]; then
+    "$MAC_BAK_DIR"/mackup_to_rsync.sh "$tmpdir/mackup" "$tmpdir/apps"
+fi
+
+for app in $app_names; do
+    for appsdir in "$scriptdir/apps" "$MAC_BAK_DIR/apps" "$tmpdir/apps"; do
+        if [ -e "$appsdir/$app" ]; then
+            find "$appsdir/$app" -type f -name 'include-from.rsync' -exec cat {} \;
+            break
+        fi
+    done
+done \
+    | rsync \
+        --include-from="$MAC_BAK_DIR/header.rsync" \
+        --include-from=- \
+        --include-from="$MAC_BAK_DIR/footer.rsync" \
+        "$@"

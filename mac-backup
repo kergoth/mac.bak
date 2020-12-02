@@ -1,0 +1,172 @@
+#!/bin/sh
+
+scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
+PATH="$scriptdir/mac.bak:$scriptdir:$PATH"
+
+usage() {
+    echo >&2 "${0##*/} SUBCOMMAND [options] [APP_NAME..]"
+    exit 2
+}
+
+mac_backup() {
+    mac_unsync "$@"
+    mac-bak-rsync "$@" -- -acvXlK ${dry_run:+--dry-run} "$HOME/" "$backupdir/"
+}
+
+mac_list_files() {
+    for app; do
+        get_app_cfg "$app" | head -n 1 | tr '\n' '\0' | xargs -0 files_from_mackup.sh
+    done \
+        | awk '!visited[$0]++'
+}
+
+mac_restore() {
+    mac_unsync "$@"
+    mac-bak-rsync "$@" -- -acvXlK ${dry_run:+--dry-run} "$backupdir/" "$HOME/"
+}
+
+mac_sync() {
+    # mac_backup "$@"
+    mac_list_files "$@" \
+        | while read -r fn; do
+            if ! [ -e "$backupdir/$fn" ]; then
+                continue
+            fi
+
+            case "$fn" in
+                Library/Containers/*)
+                    echo >&2 "Skipping sync of $fn, sandboxed"
+                    ;;
+                Library/Group\ Containers/*)
+                    echo >&2 "Skipping sync of $fn, sandboxed"
+                    ;;
+                *)
+                    ${dry_run:+echo } rm -rf "$HOME/$fn" | dry_run_redirect
+                    ${dry_run:+echo } ln -sfv "$backupdir/$fn" "$HOME/$fn" | dry_run_redirect
+                    ;;
+            esac
+        done
+}
+
+mac_unsync() {
+    mac_list_files "$@" \
+        | while read -r fn; do
+            if ! [ -e "$backupdir/$fn" ]; then
+                continue
+            fi
+
+            case "$fn" in
+                Library/Containers/*) ;;
+
+                Library/Group\ Containers/*) ;;
+
+                *)
+                    if [ -L "$HOME/$fn" ] && [ "$HOME/$fn" -ef "$backupdir/$fn" ]; then
+                        ${dry_run:+echo } rm -f "$HOME/$fn" | dry_run_redirect
+                        if [ -d "$backupdir/$fn" ]; then
+                            fn="$fn/"
+                        fi
+                        rsync -acvXlK --progress ${dry_run:+--dry-run} "$backupdir/$fn" "$HOME/$fn" | dry_run_redirect
+                    fi
+                    ;;
+            esac
+        done
+}
+
+dry_run_redirect() {
+    if [ -n "$dry_run" ]; then
+        cat >&2
+    else
+        cat
+    fi
+}
+
+get_app_cfg() {
+    for app; do
+        for dir in ~/.mackup "$MACKUP_APPS_DIR"; do
+            find "$dir" -name "$app.cfg" -maxdepth 1
+        done
+    done
+}
+
+list_all_apps() {
+    for dir; do
+        find "$dir" -name \*.cfg -maxdepth 1
+    done \
+        | sed -e 's#.*/##; s#\.cfg$##;' \
+        | sort -u
+}
+
+cmd="$1"
+shift
+
+if [ "$cmd" = help ] || [ "$cmd" = "-h" ]; then
+    usage
+fi
+
+backupdir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Mackup"
+obey_mackup_config=0
+dry_run=
+while getopts d:mnh opt; do
+    case "$opt" in
+        d)
+            backupdir="$(abspath "$OPTARG")"
+            mkdir -p "$backupdir"
+            backupdir="$(cd "$backupdir" && pwd -P)"
+            ;;
+        m)
+            obey_mackup_config=1
+            ;;
+        n)
+            dry_run=1
+            ;;
+        \? | h)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
+MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/vendor/mackup}/mackup/applications}"
+
+tmpdir="$(mktemp -d -t "${0##*/}.XXXXXX")" || exit 1
+trap 'rm -rf "$tmpdir" 2>/dev/null' EXIT INT TERM
+
+if [ $# -eq 0 ]; then
+    if [ "$obey_mackup_config" -eq 1 ] && [ -e ~/.mackup.cfg ]; then
+        to_sync="$(section_from_mackup.sh applications_to_sync <~/.mackup.cfg | sort -u | xargs)"
+        if [ -z "$to_sync" ]; then
+            to_sync="$(list_all_apps ~/.mackup "$MACKUP_APPS_DIR")"
+        fi
+        # shellcheck disable=SC2046
+        set -- $(echo "$to_sync" | tr ' ' '\n' | grep -Evw "^$(section_from_mackup.sh applications_to_ignore <~/.mackup.cfg | xargs | tr ' ' '|')$")
+        echo >&2 Apps to process: "$@"
+    else
+        # shellcheck disable=SC2046
+        set -- $(list_all_apps ~/.mackup "$MACKUP_APPS_DIR")
+    fi
+else
+    echo >&2 Apps to process: "$@"
+fi
+
+case "$cmd" in
+    backup)
+        mac_backup "$@"
+        ;;
+    list-files)
+        mac_list_files "$@"
+        ;;
+    restore)
+        mac_restore "$@"
+        ;;
+    sync)
+        mac_sync "$@"
+        ;;
+    unsync)
+        mac_unsync "$@"
+        ;;
+    *)
+        usage
+        ;;
+esac

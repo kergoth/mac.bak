@@ -1,0 +1,9 @@
+#!/bin/bash
+# shellcheck disable=SC2088
+
+set -euo pipefail
+
+for cask; do
+    brew cask cat "$cask" | sed -n -e '/^ *zap trash: \[$/,/^ *\]$/{/^ *zap trash: \[$/d; /^ *\]$/d; s/ *"//; s/",$//; p; }'
+done \
+    | grep -Ev '~/Library/(Caches|Saved Application State)/'
