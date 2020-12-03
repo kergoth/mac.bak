@@ -36,7 +36,6 @@ fi
 
 scriptdir="$(cd "$(dirname "$0")" && pwd -P)"
 MACKUP_APPS_DIR="${MACKUP_APPS_DIR:-${MACKUP_DIR:-$scriptdir/mackup}/mackup/applications}"
-MAC_BAK_DIR="$scriptdir/mac.bak"
 
 if [ -z "$app_names" ]; then
     app_names="$(list_all_apps ~/.mackup "$MACKUP_APPS_DIR")"
@@ -51,7 +50,7 @@ trap 'rm -rf "$tmpdir"' EXIT INT TERM
 mkdir "$tmpdir/mackup"
 for app in $app_names; do
     found=0
-    for appsdir in "$scriptdir/apps" "$MAC_BAK_DIR/apps" "$tmpdir/apps"; do
+    for appsdir in "$scriptdir/apps" "$scriptdir/apps" "$tmpdir/apps"; do
         if [ -e "$appsdir/$app" ]; then
             found=1
         fi
@@ -77,11 +76,11 @@ done
 
 # shellcheck disable=SC2046
 if [ $(find "$tmpdir/mackup" -type f | wc -l) -ne 0 ]; then
-    "$MAC_BAK_DIR"/mackup_to_rsync.sh "$tmpdir/mackup" "$tmpdir/apps"
+    "$scriptdir"/mackup_to_rsync.sh "$tmpdir/mackup" "$tmpdir/apps"
 fi
 
 for app in $app_names; do
-    for appsdir in "$scriptdir/apps" "$MAC_BAK_DIR/apps" "$tmpdir/apps"; do
+    for appsdir in "$scriptdir/apps" "$scriptdir/apps" "$tmpdir/apps"; do
         if [ -e "$appsdir/$app" ]; then
             find "$appsdir/$app" -type f -name 'include-from.rsync' -exec cat {} \;
             break
@@ -89,7 +88,7 @@ for app in $app_names; do
     done
 done \
     | rsync \
-        --include-from="$MAC_BAK_DIR/header.rsync" \
+        --include-from="$scriptdir/header.rsync" \
         --include-from=- \
-        --include-from="$MAC_BAK_DIR/footer.rsync" \
+        --include-from="$scriptdir/footer.rsync" \
         "$@"
